@@ -33,9 +33,9 @@ export default class TextField extends PureComponent {
     fontSize: 16,
     titleFontSize: 12,
     labelFontSize: 12,
-    labelHeight: 32,
-    labelPadding: 4,
-    inputContainerPadding: 8,
+    labelHeight: 16,
+    labelPadding: 0,
+    inputContainerPadding: 4,
 
     tintColor: 'rgb(0, 145, 234)',
     textColor: 'rgba(0, 0, 0, .87)',
@@ -78,6 +78,7 @@ export default class TextField extends PureComponent {
 
     error: PropTypes.string,
     errorColor: PropTypes.string,
+    errorTestID: PropTypes.string,
 
     lineWidth: PropTypes.number,
     activeLineWidth: PropTypes.number,
@@ -351,6 +352,7 @@ export default class TextField extends PureComponent {
       activeLineWidth,
       containerStyle,
       inputContainerStyle: inputContainerStyleOverrides,
+      errorTestID,
       clearTextOnFocus,
       ...props
     } = this.props;
@@ -539,7 +541,7 @@ export default class TextField extends PureComponent {
 
         <Animated.View style={helperContainerStyle}>
           <View style={styles.flex}>
-            <Helper style={[errorStyle, titleTextStyle]}>{error}</Helper>
+            <Helper style={[errorStyle, titleTextStyle]} testID={errorTestID}>{error}</Helper>
             <Helper style={[titleStyle, titleTextStyle]}>{title}</Helper>
           </View>
 
